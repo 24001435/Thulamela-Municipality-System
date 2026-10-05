@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thulamela Community Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f3;--sf:#fff;--ink:#16241d;--mu:#5d6b64;--pr:#0f5c47;--on:#fff;--ac:#d99a1e;--ln:#d5ddd8;--sd:#0f4436;--er:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1614;--sf:#16211e;--ink:#e7efeb;--mu:#9fb0a8;--pr:#4fc39b;--on:#06231a;--ln:#2a3a35;--sd:#123a2f;--er:#f0776f}}
+:root[data-theme="dark"]{--bg:#0e1614;--sf:#16211e;--ink:#e7efeb;--mu:#9fb0a8;--pr:#4fc39b;--on:#06231a;--ln:#2a3a35;--sd:#123a2f;--er:#f0776f}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.2;margin:0 0 .5rem}
+h1{font-size:1.6rem}
+label{display:block;font-weight:600;font-size:.9rem;margin:.9rem 0 .25rem}
+input,select,textarea{width:100%;padding:.65rem .75rem;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--ink);font:inherit}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--ac);outline-offset:1px}
+.btn{display:block;width:100%;margin-top:1rem;padding:.7rem 1rem;border:1px solid var(--pr);border-radius:8px;background:var(--pr);color:var(--on);font-weight:600;font-size:1rem;font-family:inherit;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--pr)}
+.btn.er{background:var(--er);border-color:var(--er);color:#fff}
+.btn.sm{display:inline-block;width:auto;padding:.4rem .9rem;margin:.6rem .5rem 0 0;font-size:.9rem}
+.lnk{background:none;border:0;color:var(--pr);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+.err{color:var(--er);min-height:1.4rem;margin:.5rem 0 0;font-size:.9rem}
+.mu{color:var(--mu)}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.hero{position:relative;overflow:hidden;background:#0f4436}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.ht{position:absolute;left:0;right:0;bottom:0;padding:2rem;color:#fff;background:linear-gradient(transparent,rgba(5,30,22,.85));display:flex;flex-direction:column}
+.ht b{font:600 2rem Fraunces,Georgia,serif}
+.panel{display:flex;align-items:center;justify-content:center;padding:2rem}
+.box{width:100%;max-width:400px}
+.shell{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.side{background:var(--sd);color:#fff;padding:1.25rem;display:flex;flex-direction:column;gap:.35rem}
+.side button{text-align:left;background:none;border:0;color:#fff;padding:.6rem .75rem;border-radius:8px;font:inherit;cursor:pointer}
+.side button.on,.side button:hover{background:rgba(255,255,255,.18)}
+.hp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lg{position:relative;overflow:hidden;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:Fraunces,Georgia,serif;font-weight:600;border:3px solid rgba(255,255,255,.7);flex:none}
+main,.w{padding:1.5rem;min-width:0}
+.w{max-width:1000px;margin:0 auto}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:1rem;margin:0 0 .9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem}
+.dept{display:flex;gap:.8rem;align-items:center;text-align:left;font:inherit;color:inherit;cursor:pointer;margin:0}
+.dept .lg{border-color:transparent}
+.lg img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:5px}
+.stat b{display:block;font:600 2rem Fraunces,Georgia,serif}
+.bd{display:inline-block;padding:.1rem .6rem;border-radius:99px;font-size:.8rem;font-weight:600;white-space:nowrap}
+.Submitted{background:#fdf0cc;color:#7a5600}.Approved{background:#d9e8fb;color:#12408a}.Declined{background:#fbdcd9;color:#8a1a12}.Resolved{background:#d5f0e0;color:#12613a}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{padding:.5rem;border-bottom:1px solid var(--ln);text-align:left}
+.ov{overflow-x:auto}
+.row{display:flex;gap:.8rem;flex-wrap:wrap}.row>*{flex:1;min-width:140px}
+img.th{max-width:220px;width:100%;border-radius:8px;display:block;margin-top:.5rem}
+#toasts{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:10px;z-index:9;display:flex;flex-direction:column;gap:.5rem;max-width:320px}
+.t{background:var(--ink);color:var(--bg);padding:.7rem .9rem;border-radius:8px;font-size:.88rem}
+@media(max-width:760px){.split,.shell{grid-template-columns:1fr}.hero{min-height:190px}.side{flex-direction:row;flex-wrap:wrap;align-items:center}}
+</style></head><body>
+<div id="app"></div><div id="toasts" aria-live="polite"></div>
+<script>
+const $=s=>document.querySelector(s),f=i=>$("#"+i).value.trim();
+const D=[
+["edu","Department of Education","Ed","#2a5db0",["School building damage","Missing learning materials","Scholar transport","Other"]],
+["agr","Department of Agriculture","Ag","#4d8b2f",["Livestock disease","Crop damage","Irrigation","Other"]],
+["haf","Department of Home Affairs","HA","#7a4bb0",["ID or passport delay","Birth or death registration","Office service","Other"]],
+["hlt","Department of Health","He","#c23b4a",["Clinic shortage","Medicine shortage","Ambulance delay","Other"]],
+["was","Department of Water and Sanitation","WS","#1a8aa8",["Water outage","Burst pipe","Sanitation or sewage","Other"]],
+["pwi","Department of Public Works and Infrastructure","PW","#c7791a",["Potholes / roads","Public building damage","Street lights","Other"]],
+["trn","Department of Transport","Tr","#3f4a59",["Bus or taxi service","Road safety","Damaged bridge","Other"]],
+["hse","Department of Human Settlements","HS","#8a5a3c",["Housing defect","RDP allocation","Illegal occupation","Other"]]];
+const L={Submitted:"Submitted (under investigation)",Approved:"Approved (in progress)",Declined:"Declined",Resolved:"Resolved"};
+const ADMIN_ID={edu:"EducationAdmin",agr:"AgricultureAdmin",haf:"HomeAffairsAdmin",hlt:"HealthAdmin",was:"WaterSanitationAdmin",pwi:"PublicWorksAdmin",trn:"TransportAdmin",hse:"HumanSettlementsAdmin"};
+const dn=id=>D.find(d=>d[0]==id),aid=d=>ADMIN_ID[d[0]];
+const e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fd=t=>new Date(t).toLocaleDateString("en-ZA"),now=()=>new Date().toISOString(),rid=r=>"TM-"+String(r.id).padStart(4,"0");
+let TOK=null,C={reports:[],drafts:[],stats:{},by:{}};
+async function api(p,m="GET",b){const r=await fetch("/api"+p,{method:m,headers:{"Content-Type":"application/json",...(TOK?{Authorization:"Bearer "+TOK}:{})},body:b?JSON.stringify(b):undefined});let j={};try{j=await r.json()}catch(x){}
+(j.notices||[]).forEach(toast);if(!r.ok)throw new Error(j.error||"Something went wrong. Try again.");return j}
+const run=async fn=>{try{await fn()}catch(x){$("#err")?err(x.message):toast(x.message)}};
+async function loadRes(v){const[r,d]=await Promise.all([api("/reports/mine"),api("/drafts")]);C.reports=r.reports;C.drafts=d.drafts;v?go(v):render()}
+async function loadAdm(){C.reports=(await api("/admin/reports")).reports;render()}
+async function loadMain(){const q=S.f=="all"?"":"?dept="+S.f;const[a,b,c]=await Promise.all([api("/main/stats"+q),api("/main/reports"+q),api("/main/breakdown")]);C.stats=a;C.reports=b.reports;C.by=c.by;S.v="main";render()}
+function toast(m){const t=document.createElement("div");t.className="t";t.textContent=m;$("#toasts").append(t);setTimeout(()=>t.remove(),6500)}
+const err=m=>$("#err").textContent=m;
+let S={v:"welcome"};
+const go=(v,o={})=>{Object.assign(S,{v},o);render();scrollTo(0,0)},out=()=>{TOK=null;S={v:"welcome"};render()};
+const render=()=>{$("#app").innerHTML=V[S.v]()};
+const lg=(d,s=64)=>`<div class="lg" style="background:${d[3]};width:${s}px;height:${s}px;font-size:${s/3}px">${d[2]}<img src="images/logos/${d[0]}.png" alt="" onerror="this.remove()"></div>`;
+/* Replace this SVG with the municipal photo (e.g. an <img> with object-fit:cover) */
+const HERO=`<div class="hero"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Hills of Thulamela"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c66b"/><stop offset=".6" stop-color="#f3e2b8"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><circle cx="300" cy="90" r="34" fill="#fff3cf"/><path d="M0 170L70 110L130 160L210 90L290 165L400 120V300H0Z" fill="#5b8f7b"/><path d="M0 215L90 165L170 210L260 150L400 220V300H0Z" fill="#2f6b57"/><path d="M0 260Q120 225 230 255T400 245V300H0Z" fill="#0f4436"/></svg><img class="hp" src="images/hero.jpg" alt="Thulamela Municipality" onerror="this.remove()"><div class="ht"><b>Thulamela Municipality</b><span>Community Services System</span></div></div>`;
+const split=x=>`<div class="split">${HERO}<div class="panel"><div class="box">${x}</div></div></div>`;
+const back=(v="welcome")=>`<p><button class="lnk" onclick="go('${v}')">Back</button></p>`;
+const V={
+welcome:()=>split(`<h1>Welcome</h1><p class="mu">Report village problems to the right government department and follow their progress. Choose how you want to continue.</p><button class="btn" onclick="go('rlogin')">Resident</button><button class="btn ghost" onclick="go('alogin')">Admin</button><p class="mu" style="font-size:.85rem;margin-top:2rem"></p>`),
+rlogin:()=>split(`<h1>Resident log in</h1><label for="ph">Phone number</label><input id="ph" type="tel" autocomplete="tel"><label for="pw">Password</label><input id="pw" type="password"><p class="err" id="err"></p><button class="btn" onclick="rLogin()">Log in</button><p class="mu">No account? <button class="lnk" onclick="go('signup')">Sign up</button></p><p><button class="lnk" onclick="go('forgot',{fs:1})">Forgot password?</button></p>${back()}<p class="mu" style="font-size:.85rem"></p>`),
+signup:()=>split(`<h1>Create resident account</h1><div class="row"><div><label for="fn">First name</label><input id="fn"></div><div><label for="ln">Last name</label><input id="ln"></div></div><label for="ph">Phone number</label><input id="ph" type="tel"><label for="em">Email address</label><input id="em" type="email"><label for="pw">Password</label><input id="pw" type="password"><label for="cp">Confirm password</label><input id="cp" type="password"><p class="err" id="err"></p><button class="btn" onclick="signUp()">Sign up</button>${back("rlogin")}`),
+forgot:()=>split(S.fs==1?`<h1>Reset password</h1><p class="mu">Enter your registered phone number and we will send you a one-time PIN.</p><label for="ph">Phone number</label><input id="ph" type="tel"><p class="err" id="err"></p><button class="btn" onclick="sendOtp()">Send OTP</button>`:S.fs==2?`<h1>Enter OTP</h1><label for="otp">6-digit OTP</label><input id="otp" inputmode="numeric" maxlength="6"><p class="err" id="err"></p><button class="btn" onclick="chkOtp()">Verify OTP</button>`:`<h1>New password</h1><label for="pw">New password</label><input id="pw" type="password"><label for="cp">Confirm password</label><input id="cp" type="password"><p class="err" id="err"></p><button class="btn" onclick="newPw()">Reset password</button>`+back("rlogin")),
+alogin:()=>split(`<h1>Admin log in</h1><label for="aid">Admin ID</label><input id="aid" autocomplete="username"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password"><p class="err" id="err"></p><button class="btn" onclick="aLogin()">Log in</button>${back()}`),
+
+rdepts:()=>`<div class="w"><div class="row" style="align-items:center"><div><h1>Hello, ${e(S.user.fn)}</h1><p class="mu">Choose the department you want to report to.</p></div><span style="flex:0"><button class="btn sm" onclick="out()">Log out</button></span></div><div class="grid">${D.map(d=>`<button class="card dept" onclick="pickDept('${d[0]}')">${lg(d,48)}<b>${d[1]}</b></button>`).join("")}</div></div>`,
+rdash:()=>{const d=dn(S.dept),n=C.drafts.length;return `<div class="shell">${side(d,[["report","Report form"],["track","Track report"],["draft","Drafts ("+n+")"]],S.user.fn+" "+S.user.ln)}<main>${{report:repForm,track:trackV,draft:draftV}[S.tab]()}</main></div>`},
+adm:()=>{const d=dn(S.dept);return `<div class="shell">${side(d,[["view","View report"],["approved","Approved report"],["declined","Declined report"],["resolved","Resolved report"],["gen","Generate report"]],"Admin "+aid(d))}<main>${admV()}</main></div>`},
+main:()=>{const a=C.reports,c=s=>C.stats[s]||0;
+return `<div class="w"><div class="row" style="align-items:center"><h1>THULAMELA MUNICIPALITY ADMIN DASHBOARD</h1><span style="flex:0"><button class="btn sm" onclick="out()">Log out</button></span></div><label for="fl">Filter by department</label><select id="fl" onchange="S.f=this.value;run(loadMain)"><option value="all">All departments</option>${D.map(d=>`<option value="${d[0]}" ${S.f==d[0]?"selected":""}>${d[1]}</option>`).join("")}</select><div class="grid" style="margin-top:1rem">${[["Residents",C.stats.residents||0],["Total Reports",C.stats.total||0],["Under Investigation",c("Submitted")],["In Progress",c("Approved")],["Resolved",c("Resolved")],["Declined",c("Declined")]].map(([k,n])=>`<div class="card stat"><b>${n.toLocaleString("en-ZA")}</b>${k}</div>`).join("")}</div><button class="btn sm" onclick="S.gen=1;render()">Generate report</button>${S.gen?genT():""}<h2 style="margin-top:1.2rem">Reports</h2><div class="card ov"><table><tr><th>ID<th>Department<th>Category<th>Village<th>Status<th>Submitted</tr>${a.map(r=>`<tr><td>${rid(r)}<td>${dn(r.dept)[1]}<td>${e(r.cat)}<td>${e(r.vil)}<td><span class="bd ${r.st}">${L[r.st]}</span><td>${fd(r.sub)}</tr>`).join("")||"<tr><td>No reports yet.</tr>"}</table></div></div>`}
+};
+const side=(d,items,who)=>`<aside class="side">${lg(d)}<b>${d[1]}</b><span style="opacity:.8">${e(who)}</span>${items.map(([k,l])=>`<button class="${S.tab==k?"on":""}" onclick="tab('${k}')">${l}</button>`).join("")}<span style="flex:1"></span>${S.v=="rdash"?`<button onclick="go('rdepts')">Change department</button>`:""}<button onclick="out()">Log out</button></aside>`;
+const tab=k=>{S.tab=k;S.gen=0;if(k=="report")S.cur=S.did=S.img=null;run(()=>S.v=="rdash"?loadRes():S.v=="adm"?loadAdm():render())};
+const rc=(r,act="",who=0)=>{const u=r.who||{};return `<div class="card"><div class="row" style="align-items:center"><b>${rid(r)} ${e(r.cat)}</b><span style="flex:0"><span class="bd ${r.st}">${L[r.st]}</span></span></div><p class="mu" style="margin:.3rem 0">${dn(r.dept)[1]}. Submitted ${fd(r.sub)}${who?`. By ${e(u.fn)} ${e(u.ln)}, ${e(u.ph)}`:""}</p><p style="margin:.3rem 0">${e(r.desc)}</p><p class="mu" style="margin:.3rem 0">${e(r.vil)}, ${e(r.loc)}. Incident date ${r.dt}</p>${r.img?`<img class="th" src="${r.img}" alt="Evidence photo">`:""}${act}</div>`};
+/* resident actions */
+function rLogin(){run(async()=>{const j=await api("/auth/login","POST",{ph:f("ph"),pw:$("#pw").value});TOK=j.token;S.user=j.user;go("rdepts")})}
+function signUp(){run(async()=>{const p=$("#pw").value;if(p!==$("#cp").value)throw Error("Passwords do not match.");await api("/auth/register","POST",{fn:f("fn"),ln:f("ln"),ph:f("ph"),em:f("em"),pw:p});toast("Account created. Log in to continue.");go("rlogin")})}
+function sendOtp(){run(async()=>{S.fp=f("ph");await api("/auth/forgot","POST",{ph:S.fp});go("forgot",{fs:2})})}
+function chkOtp(){run(async()=>{const j=await api("/auth/verify-otp","POST",{ph:S.fp,otp:f("otp")});S.rt=j.resetToken;go("forgot",{fs:3})})}
+function newPw(){run(async()=>{const p=$("#pw").value;if(p!==$("#cp").value)throw Error("Passwords do not match.");await api("/auth/reset","POST",{resetToken:S.rt,pw:p});toast("Password reset. Log in with your new password.");go("rlogin")})}
+function pickDept(id){S.dept=id;S.tab="report";S.cur=S.did=S.img=null;run(()=>loadRes("rdash"))}
+function repForm(){const d=dn(S.dept),c=S.cur||{},td=now().slice(0,10);return `<h1>Report to ${d[1]}</h1><p class="mu">Fields marked * are compulsory.</p><div class="card"><label for="cat">Category *</label><select id="cat"><option value="">Select category</option>${d[4].map(x=>`<option ${c.cat==x?"selected":""}>${x}</option>`).join("")}</select><label for="desc">Description of the problem *</label><textarea id="desc" rows="4">${e(c.desc)}</textarea><label for="img">Photo of the problem (proof) *</label><input id="img" type="file" accept="image/*" onchange="pick(event)"><img id="pv" class="th" alt="Photo preview" ${S.img?`src="${S.img}"`:"hidden"}><div class="row"><div><label for="vil">Village name *</label><input id="vil" value="${e(c.vil)}"></div><div><label for="loc">Specific location *</label><input id="loc" value="${e(c.loc)}"></div></div><label for="dt">Date of accident or problem *</label><input id="dt" type="date" max="${td}" value="${c.dt||""}"><p class="err" id="err"></p><button class="btn sm" onclick="sub()">Submit report</button><button class="btn sm ghost" onclick="draft()">Save as draft</button></div>`}
+function pick(ev){const fl=ev.target.files[0];if(!fl)return;const r=new FileReader();r.onload=()=>{const i=new Image();i.onload=()=>{const c=document.createElement("canvas"),k=Math.min(1,480/i.width);c.width=i.width*k;c.height=i.height*k;c.getContext("2d").drawImage(i,0,0,c.width,c.height);S.img=c.toDataURL("image/jpeg",.7);$("#pv").src=S.img;$("#pv").hidden=false};i.src=r.result};r.readAsDataURL(fl)}
+const rd=()=>({cat:$("#cat").value,desc:f("desc"),vil:f("vil"),loc:f("loc"),dt:$("#dt").value,img:S.img||null});
+function sub(){const v=rd(),m=[["cat","category"],["desc","description"],["img","photo"],["vil","village name"],["loc","specific location"],["dt","date"]].filter(([k])=>!v[k]).map(x=>x[1]);
+if(m.length)return err("Still needed: "+m.join(", ")+".");
+run(async()=>{await api("/reports","POST",{...v,dept:S.dept,draftId:S.did});S.cur=S.did=S.img=null;S.tab="track";await loadRes()})}
+function draft(){const v=rd();if(!v.cat&&!v.desc&&!v.vil&&!v.loc&&!v.dt&&!v.img)return err("Fill in at least one field to save a draft.");
+run(async()=>{await api("/drafts","POST",{...v,id:S.did,dept:S.dept});toast("Draft saved");S.cur=S.did=S.img=null;S.tab="draft";await loadRes()})}
+function draftV(){const a=C.drafts;return `<h1>Drafts</h1>`+(a.length?a.map(x=>`<div class="card"><b>${dn(x.dept)[1]}</b><p class="mu">${e(x.cat||"No category")}. ${e((x.desc||"No description").slice(0,90))}<br>Last saved ${fd(x.upd)}</p><button class="btn sm" onclick="openDraft(${x.id})">Continue</button><button class="btn sm ghost" onclick="delDraft(${x.id})">Delete</button></div>`).join(""):`<p class="mu">No drafts yet. Start a report and choose Save as draft to keep it here.</p>`)}
+function openDraft(id){const x=C.drafts.find(y=>y.id==id);S.cur=x;S.did=id;S.img=x.img;S.dept=x.dept;S.tab="report";render()}
+function delDraft(id){run(async()=>{await api("/drafts/"+id,"DELETE");await loadRes()})}
+function trackV(){const a=C.reports;return `<h1>Track report</h1>`+(a.length?a.map(r=>rc(r)).join(""):`<p class="mu">You have not submitted any reports yet.</p>`)}
+/* admin actions */
+function aLogin(){run(async()=>{const j=await api("/auth/admin","POST",{uid:f("aid"),pw:$("#pw").value});TOK=j.token;S.gen=0;if(j.admin.main){S.f="all";await loadMain()}else{S.dept=j.admin.dept;S.tab="view";S.v="adm";await loadAdm()}})}
+function act(id,st){run(async()=>{await api("/admin/reports/"+id,"PATCH",{status:st});if(st!="Approved")toast("Report is now "+st+". The resident sees this in Track report.");await loadAdm()})}
+function admV(){const a=C.reports,T=S.tab,c=s=>a.filter(r=>r.st==s).length;
+if(T=="gen"){const ap=c("Approved")+c("Resolved"),dc=c("Declined");return `<h1>Generate report</h1><button class="btn sm" onclick="S.gen=1;render()">Generate report</button>`+(S.gen?`<div class="grid" style="margin-top:1rem">${[["Total reports (approved + declined)",ap+dc],["Approved",ap],["Declined",dc],["Resolved",c("Resolved")],["Awaiting review",c("Submitted")]].map(([k,n])=>`<div class="card stat"><b>${n}</b>${k}</div>`).join("")}</div>`:"")}
+const st={view:"Submitted",approved:"Approved",declined:"Declined",resolved:"Resolved"}[T],tt={view:"Submitted reports",approved:"Approved reports",declined:"Declined reports",resolved:"Resolved reports"}[T],b=a.filter(r=>r.st==st);
+return `<h1>${tt}</h1>`+(b.length?b.map(r=>rc(r,T=="view"?`<button class="btn sm" onclick="act(${r.id},'Approved')">Approve</button><button class="btn sm er" onclick="act(${r.id},'Declined')">Decline</button>`:T=="approved"?`<button class="btn sm" onclick="act(${r.id},'Resolved')">Resolved</button>`:"",1)).join(""):`<p class="mu">No reports here yet.</p>`)}
+function genT(){const rows=D.map(d=>{const b=C.by[d[0]]||{};return [d[1],b.total||0,b.Submitted||0,b.Approved||0,b.Resolved||0,b.Declined||0]});
+return `<div class="card ov" style="margin-top:1rem"><table><tr><th>Department<th>Total<th>Under investigation<th>In progress<th>Resolved<th>Declined</tr>${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table></div>`}
+render();
+</script></body></html>

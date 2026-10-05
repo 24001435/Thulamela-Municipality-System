@@ -1,0 +1,4 @@
+.env
+node_modules/
+thulamela.db*
+uploads/*
